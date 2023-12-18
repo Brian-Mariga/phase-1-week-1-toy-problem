@@ -64,6 +64,6 @@
         License: This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3
 
 `Challenge 3: Net Salary Calculator (Toy Problem)`
-    *Overview*
+    *Description*
     **
     

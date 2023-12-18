@@ -1,73 +1,73 @@
+// Declare variables to store basic salary and benefits
+let basicSalary;
+let benefits;
+
+// Function to prompt the user for input and calculate gross salary
+function calculateGrossSalary() {
+  // Prompt the user to enter the basic salary and convert it to a number
+  const enterBasicSalary = prompt("Enter the Basic Salary:");
+  basicSalary = Number(enterBasicSalary);
+
+  // Validate the basic salary input
+  if (isNaN(basicSalary) || basicSalary < 0) {
+    console.log("Basic Salary MUST be a number greater or equal to ZERO(0)");
+    return;
+  }
+
+  // Prompt the user to enter benefits and convert it to a number
+  const enterBenefits = prompt("Enter the benefits:");
+  benefits = Number(enterBenefits);
+
+  // Validate the benefits input
+  if (isNaN(benefits) || benefits < 0) {
+    console.log("Benefits MUST be a number greater or equal to ZERO(0)");
+    return;
+  }
+
+  // Calculate gross salary inside the function
+  const grossSalary = basicSalary + benefits;
+  console.log("Gross Salary:", grossSalary);
+
+  // Call the function to calculate payee using the calculated gross salary
+  calculatePayee(grossSalary);
+}
+
+// Declare variables for paye and sub-payees
+let paye, subPaye1, subPaye2, subPaye3, subPaye4, subPaye5;
+
 // Function to calculate tax based on KRA rates
 function calculatePayee(grossSalary) {
   if (grossSalary <= 24000) {
-    return 0;
-  } else if (grossSalary <= 32000) {
-    return (grossSalary - 24000) * 0.1;
-  } else if (grossSalary <= 41000) {
-    return (grossSalary - 32000) * 0.15 + 800;
-  } else if (grossSalary <= 52000) {
-    return (grossSalary - 41000) * 0.20 + 2,100;
-  } else if (grossSalary <= 63000) {
-    return (grossSalary - 52000) * 0.25 + 4,100;
-  } else {
-    return (grossSalary - 63000) * 0.30 + 8,600;
+    paye = grossSalary * 0.1;
+    console.log(`P.A.Y.E: ${paye}`);
+  } else if (grossSalary > 24000 && grossSalary < 32334) {
+    subPaye1 = 24000 * 0.1;
+    subPaye2 = (grossSalary - 24000) * 0.25;
+    paye = subPaye1 + subPaye2;
+    console.log(`P.A.Y.E: ${paye}`);
+  } else if (grossSalary > 32333 && grossSalary < 500001) {
+    subPaye1 = 24000 * 0.1;
+    subPaye2 = (32333 - 24000) * 0.25;
+    subPaye3 = (grossSalary - 32333) * 0.3;
+    paye = subPaye1 + subPaye2 + subPaye3;
+    console.log(`P.A.Y.E: ${paye}`);
+  } else if (grossSalary > 500000 && grossSalary < 800001) {
+    subPaye1 = 24000 * 0.1;
+    subPaye2 = (32333 - 24000) * 0.25;
+    subPaye3 = (500000 - 32333) * 0.3;
+    subPaye4 = (grossSalary - 500001) * 0.325;
+    paye = subPaye1 + subPaye2 + subPaye3 + subPaye4;
+    console.log(`P.A.Y.E: ${paye}`);
+  } else if (grossSalary > 800000) {
+    subPaye1 = 24000 * 0.1;
+    subPaye2 = (32333 - 24000) * 0.25;
+    subPaye3 = (500000 - 32333) * 0.3;
+    subPaye4 = (800000 - 500000) * 0.325;
+    subPaye5 = (grossSalary - 800000) * 0.35;
+    paye = subPaye1 + subPaye2 + subPaye3 + subPaye4 + subPaye5;
+    console.log(`P.A.Y.E: ${paye}`);
   }
 }
 
-// Function to calculate NHIF deductions
-function calculateNhifDeductions(grossSalary) {
-  if (grossSalary <= 5,999.99) {
-    return 150;
-  } else if (grossSalary <= 14,999.99) {
-    return 300;
-  } else if (grossSalary <= 24,999.99) {
-    return 400;
-  } else if (grossSalary <= 34,999.99) {
-    return 550;
-  } else if (grossSalary <= 44,999.99) {
-    return 600;
-  } else if (grossSalary <= 54,999.99) {
-    return 800;
-  } else if (grossSalary <= 64,999.99) {
-    return 1000;
-  } else if (grossSalary <= 74,999.99) {
-    return 1200;
-  } else if (grossSalary <= 84,999.99) {
-    return 1400;
-  } else {
-    return 1500;
-  }
-}
-
-// Function to calculate NSSF deductions
-function calculateNssfDeductions(grossSalary) {
-  if (grossSalary <= 5,999.99) {
-    return 0;
-  } else if (grossSalary <= 6,999.99) {
-    return 200;
-  } else if (grossSalary <= 7,999.99) {
-    return 300;
-  } else if (grossSalary <= 8,999.99) {
-    return 400;
-  } else if (grossSalary <= 9,999.99) {
-    return 500;
-  } else if (grossSalary <= 10,999.99) {
-    return 600;
-  } else if (grossSalary <= 11,999.99) {
-    return 700;
-  } else if (grossSalary <= 12,999.99) {
-    return 800;
-  } else if (grossSalary <= 13,999.99) {
-    return 900;
-  } else if (grossSalary <= 14,999.99) {
-    return 1000;
-  } else if (grossSalary <= 15,999.99) {
-    return 1,100;
-  } else if (grossSalary <= 16,999.99) {
-    return 1,200;
-  } else if (grossSalary <= 17,999.99) {
-    return 1,300;
-  } else if (grossSalary <= 18,999.99) {
-    return 1,400;
-  
+// Call the function to start the process
+calculateGrossSalary();
