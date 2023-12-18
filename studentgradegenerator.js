@@ -11,7 +11,7 @@ function grading() {
   //The input is checked if its in a valid range
   else if (marks < 0 || marks > 100) {
     return "Marks Must be range from 0 to 100";
-  } //The grade is then determined based on the criteria and then it is given out 
+  } //The grade is then determined based on the criteria and then it is given out
   else if (marks > 79 && marks <= 100) {
     return "Grade is A";
   } else if (marks >= 60 && marks <= 79) {
