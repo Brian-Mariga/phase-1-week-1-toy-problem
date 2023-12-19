@@ -24,16 +24,23 @@ function calculateGrossSalary() {
     return;
   }
 
-  // Calculate gross salary inside the function
+  // Calculate gross salary using the basicSalary and benefits
   const grossSalary = basicSalary + benefits;
   console.log("Gross Salary:", grossSalary);
 
   // Call the function to calculate payee using the calculated gross salary
   calculatePayee(grossSalary);
+  const nssfRate = 0.06;
+  const nssfContribution = grossSalary * nssfRate;
+  console.log(`NSSF Contribution: ${nssfContribution}`);
+
+  const netPay = grossSalary - paye - nhifDeductions - nssfContribution;
+  console.log(`Net Salary: ${netPay}`);
 }
 
 // Declare variables for paye and sub-payees
 let paye, subPaye1, subPaye2, subPaye3, subPaye4, subPaye5;
+let nhifDeductions;
 
 // Function to calculate tax based on KRA rates
 function calculatePayee(grossSalary) {
@@ -41,6 +48,7 @@ function calculatePayee(grossSalary) {
     paye = grossSalary * 0.1;
     console.log(`P.A.Y.E: ${paye}`);
   } else if (grossSalary > 24000 && grossSalary < 32334) {
+    // Calculate paye with sub-payees for specific salary range
     subPaye1 = 24000 * 0.1;
     subPaye2 = (grossSalary - 24000) * 0.25;
     paye = subPaye1 + subPaye2;
@@ -67,7 +75,73 @@ function calculatePayee(grossSalary) {
     paye = subPaye1 + subPaye2 + subPaye3 + subPaye4 + subPaye5;
     console.log(`P.A.Y.E: ${paye}`);
   }
+
+  // Call the function to calculate NHIF deductions
+  calculateNhifDeductions(grossSalary);
 }
 
 // Call the function to start the process
 calculateGrossSalary();
+
+// Function to calculate NHIF deductions
+function calculateNhifDeductions(grossSalary) {
+  // Calculate NHIF deductions based on gross salary ranges
+  if (grossSalary < 6000) {
+    nhifDeductions = 150;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 8000) {
+    nhifDeductions = 300;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 12000) {
+    nhifDeductions = 400;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 15000) {
+    nhifDeductions = 500;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 20000) {
+    nhifDeductions = 600;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 25000) {
+    nhifDeductions = 750;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 30000) {
+    nhifDeductions = 850;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 35000) {
+    nhifDeductions = 900;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 40000) {
+    nhifDeductions = 950;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 45000) {
+    nhifDeductions = 1000;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 50000) {
+    nhifDeductions = 1100;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 60000) {
+    nhifDeductions = 1200;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 70000) {
+    nhifDeductions = 1300;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 80000) {
+    nhifDeductions = 1400;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 90000) {
+    nhifDeductions = 1500;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary < 100000) {
+    nhifDeductions = 1600;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary > 99999) {
+    nhifDeductions = 1700;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  } else if (grossSalary > 99999) {
+    nhifDeductions = 1700;
+    console.log(`NHIF Deduction: ${nhifDeductions}`);
+  }
+}
+
+// Call the function to calculate NHIF deductions
+calculateNhifDeductions();
