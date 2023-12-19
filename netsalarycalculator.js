@@ -30,12 +30,13 @@ function calculateGrossSalary() {
 
   // Call the function to calculate payee using the calculated gross salary
   calculatePayee(grossSalary);
+
+  //Declare a variable to store nssf rate
   const nssfRate = 0.06;
+
+  //Declare a variable to store calculate nssf contribution
   const nssfContribution = grossSalary * nssfRate;
   console.log(`NSSF Contribution: ${nssfContribution}`);
-
-  const netPay = grossSalary - paye - nhifDeductions - nssfContribution;
-  console.log(`Net Salary: ${netPay}`);
 }
 
 // Declare variables for paye and sub-payees
@@ -79,9 +80,6 @@ function calculatePayee(grossSalary) {
   // Call the function to calculate NHIF deductions
   calculateNhifDeductions(grossSalary);
 }
-
-// Call the function to start the process
-calculateGrossSalary();
 
 // Function to calculate NHIF deductions
 function calculateNhifDeductions(grossSalary) {
@@ -140,8 +138,14 @@ function calculateNhifDeductions(grossSalary) {
   } else if (grossSalary > 99999) {
     nhifDeductions = 1700;
     console.log(`NHIF Deduction: ${nhifDeductions}`);
+
+    const netPay = grossSalary - paye - nhifDeductions - nssfContribution;
+    console.log(`Net Salary: ${netPay}`);
   }
 }
 
 // Call the function to calculate NHIF deductions
 calculateNhifDeductions();
+
+// Call the function to start the process
+calculateGrossSalary();
